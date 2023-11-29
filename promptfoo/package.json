@@ -1,0 +1,17 @@
+{
+  "name": "promptfoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "promptfoo eval",
+    "eval": "promptfoo eval",
+    "eval-no-cache": "promptfoo eval --no-cache --grader openai:gpt-3.5-turbo",
+    "view": "promptfoo view"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "promptfoo": "^0.29.0"
+  }
+}

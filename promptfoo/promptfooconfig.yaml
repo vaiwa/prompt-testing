@@ -1,0 +1,48 @@
+# This configuration runs each prompt through a series of example inputs and checks if they meet requirements.
+# Learn more: https://promptfoo.dev/docs/configuration/guide
+
+prompts:
+  - file://prompt.js
+providers:
+  - id: openai:gpt-4-0613
+    # config:
+    #   temperature: 0.5
+    #   top_p: 0.9
+    #   seed: -1
+scenarios:
+  - config:
+      - vars:
+          target: dog
+      - vars:
+          target: cat
+      - vars:
+          target: boy with lollipop
+      - vars:
+          target: dog with moustache
+      - vars:
+          target: small cat with yellow hat in photorealistic style
+    tests:
+      # - description: Manual review
+      - description: Generate image
+        assert:
+          - type: llm-rubric
+            value: Does it ask for more details about the image I want to generate?
+
+  # - description: Second test case - manual review
+  #   # Test cases don't need assertions if you prefer to manually review the output
+  #   vars:
+  #     var1: new value
+  #     var2: another value
+  #     var3: third value
+
+  # - description: Third test case - other types of automatic review
+  #   vars:
+  #     var1: yet another value
+  #     var2: and another
+  #     var3: dear llm, please output your response in json format
+  #   assert:
+  #     - type: contains-json
+  #     - type: similar
+  #       value: ensures that output is semantically similar to this text
+  #     - type: model-graded-closedqa
+  #       value: ensure that output contains a reference to X
